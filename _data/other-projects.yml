@@ -1,0 +1,72 @@
+- name: Malaria Detection
+  url: https://github.com/RheagalFire/Malaria_Detection
+  code: https://github.com/RheagalFire/Malaria_Detection
+  description: This project demostrates the use of Transfer Learning using VGG Network to classify whether the cell is infected or not.The app was made on Streamlit and has been deployed as a docker wrapper on cloud using two step deployment process.
+  used:
+    - thing: Streamlit
+    - thing: Python
+    - thing: Transfer Learning
+    - thing: Google Cloud Run
+
+- name: Movie Recommendation App
+  url: https://github.com/RheagalFire/Content_Based_Filtering
+  code: https://github.com/RheagalFire/Content_Based_Filtering
+  description: This is a deployed app which suggests movies based on the similarity of their content. The similarity metric that was used is cosine similarity.
+  used:
+    - thing: Flask
+    - thing: HTML
+    - thing: JavaScript
+    - thing: CSS
+    - thing: Postgresql
+    - thing: Heroku
+
+- name: Book Recommendation Engine 
+  url: https://github.com/RheagalFire/Book-Recommendation-Engine
+  code: https://github.com/RheagalFire/Book-Recommendation-Engine
+  description: Built a book recommendation engine using collaborative filtering technique with k-means clustering.The similarity in taste of two users is calculated based on the similarity in the rating history of the users.
+
+  used:
+    - thing: Python
+    - thing: Collaborative Filtering
+    - thing: KNN
+    - thing: Numpy
+    - thing: Pandas 
+
+- name: Sign Language Detection
+  url: https://github.com/RheagalFire/Sign-Language-Detector
+  code: https://github.com/RheagalFire/Sign-Language-Detector
+  description: With the help of transfer learning trained InceptionV3 model to classify 26 different gestures mapping 26 Alphabets of English Language
+  used:
+    - thing: Python
+    - thing: Transfer Learning
+    - thing: Inception V3
+    - thing: Matplotlib and PIL 
+
+- name: Sentiment Analysis of Movie Reviews
+  url: https://github.com/RheagalFire/Sentiment-Analysis-of-Movie-Reviews
+  code: https://github.com/RheagalFire/Sentiment-Analysis-of-Movie-Reviews
+  description: Using several models made a vote classifier based on hard voting in which predictions are the majority vote of contributing models.
+  used:
+    - thing: Python
+    - thing: Vote Classifier
+    - thing: NLTK
+    - thing: Pickle
+
+- name: Image generation through GANS
+  url: https://github.com/RheagalFire/Image-Generation-using-GANS
+  code: https://github.com/RheagalFire/Image-Generation-using-GANS
+  description: Built a simple Generative Adversarial Network to generate image of digit 5 from noise distribution.
+  used:
+    - thing: Python
+    - thing: Generator And Discriminator Networks
+    - thing: Pillow
+    - thing: OpenCv
+
+- name: Part of Speech Tagging
+  url: https://github.com/RheagalFire/POS-Tagging
+  code: https://github.com/RheagalFire/POS-Tagging
+  description: Trained a LSTM neural network with Word2vec Embeddings of 300 dimensions to classify words into thier parts of speech.
+  used:
+    - thing: Python
+    - thing: LSTM
+    - thing: Word Embeddings

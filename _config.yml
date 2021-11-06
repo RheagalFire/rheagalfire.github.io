@@ -1,0 +1,43 @@
+# Site settings
+name: Aarish Alam
+title: Aarish Alam | Data Scientist
+description: Data Scientist working on building experiences
+url: https://github.com/RheagalFire/Portfolio
+baseurl: ''
+email: arishalam121@gmail.com
+cover: https://rheagalfire.github.io/img/og.png
+logo: https://rheagalfire.github.io/img/emojis/technologist.png
+resume: https://rheagalfire.github.io/resume.pdf
+social:
+  - title: email
+    url: mailto:arishalam121@gmail.com
+  - title: twitter
+    url: https://twitter.com/AarishAlam11
+  - title: instagram
+    url: https://www.instagram.com/alamarish/
+  - title: github
+    url: https://github.com/RheagalFire
+  - title: linkedin
+    url: https://www.linkedin.com/in/aarish-alam/
+
+# Build settings
+markdown: kramdown
+
+exclude:
+  - 'Gemfile'
+  - 'Gemfile.lock'
+  - '*.gemspec'
+  - 'README.md'
+  - 'node_modules'
+  - 'build'
+  - 'gulpfile.js'
+  - 'package.json'
+
+keep_files:
+  - 'CNAME'
+  - '.git'
+  - '.gitignore'
+
+plugins_dir:
+  - jekyll-minifier
+  - jekyll-sitemap

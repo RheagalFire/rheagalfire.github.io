@@ -1,9 +1,20 @@
+- company: Fold
+  url: https://fold.money/
+  time: Jul 2023 - present
+  position: Machine Learning Engineer
+  
+- company: Phonepe
+  url: https://www.phonepe.com/
+  time: Jan 2023 - Jun 2023
+  position: Automation Analyst
+
+- company: Shopagain
+  url: https://www.shopagain.io/
+  time: December 2021 - December 2022
+  position: Data Scientist
+  
 - company: Unmazer.ai
   url: https://www.unmazer.ai/
   time: May 2021-August 2021
   position: Data Scientist 
  
-- company: Shopagain
-  url: https://www.shopagain.io/
-  time: December 2021 - December 2022
-  position: Data Scientist

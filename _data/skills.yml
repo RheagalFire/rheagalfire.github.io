@@ -2,22 +2,18 @@ languages:
   - item: Python
   - item: SQL
   - item: C++
-  - item: JavaScript
-  - item: HTML
-  - item: CSS
-
+  
 frameworks:
   - item: Tensorflow
   - item: Numpy 
   - item: Pandas
-  - item: Node
-  - item: Flask
-  - item: Django 
+  - item: Pytorch
+  - item: RASA
 
 tools:
   - item: Bash
   - item: Git & Github
-  - item: Weights and Biases
+  - item: MLFLOW
   - item: Chrome DevTools
   - item: Postman
   - item: MongoDB

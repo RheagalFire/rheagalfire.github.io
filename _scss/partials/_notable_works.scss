@@ -1,0 +1,28 @@
+.notable-works {
+    .section__title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .section__content {
+      .work {
+        margin-bottom: 25px;
+        .work__name {
+          font-weight: 700;
+          a {
+            font-size: 1.25rem;
+            color: #007BFF; // Change this to the color you want for the link
+            text-decoration: none;
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+        p {
+          font-size: 1rem;
+          font-family: 'Inconsolata', monospace;
+          color: #333; // Change this to the color you want for the description
+        }
+      }
+    }
+  }

@@ -1,0 +1,13 @@
+<section class="section notable-works">
+    <div class="section__title">Notable Works</div>
+    <div class="section__content">
+      {% for work in site.data.notable_works %}
+      <div class="work">
+        <div class="work__name">
+          <a href="{{work.url}}" target="_blank" class="arrow-link">{{work.Title}}</a>
+        </div>
+        <p>{{work.description}}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </section>

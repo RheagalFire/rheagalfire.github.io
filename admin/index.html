@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Content Manager</title>
+  <script src="https://unpkg.com/netlify-cms@3.1.11/dist/netlify-cms.js"></script>
+</head>
+<body>
+  <!-- Include the CMS configuration file -->
+  <script>
+    console.log('Adding additional logging for CMS initialization...');
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('DOM fully loaded and parsed.');
+      try {
+        if (typeof CMS !== 'undefined') {
+          console.log('Netlify CMS script loaded successfully.');
+          CMS.init({
+            config: '/admin/config.yml'
+          });
+          console.log('CMS.init() called with config.');
+        } else {
+          console.error('Netlify CMS script failed to load.');
+        }
+      } catch (error) {
+        console.error('Error during CMS initialization:', error);
+      }
+    });
+  </script>
+</body>
+</html>

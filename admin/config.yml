@@ -24,3 +24,4 @@ publish_mode: editorial_workflow
 auth:
   providers:
     - { name: "google", client_id: "${client_id}", client_secret: "${client_secret}" }
+  email: arishalam121@gmail.com

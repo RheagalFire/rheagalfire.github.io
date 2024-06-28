@@ -21,6 +21,6 @@ collections:
 publish_mode: editorial_workflow
 
 # Google SSO Integration
-# auth:
-#   providers:
-#     - { name: "google", client_id: "YOUR_GOOGLE_CLIENT_ID", client_secret: "YOUR_GOOGLE_CLIENT_SECRET" }
+auth:
+  providers:
+    - { name: "google", client_id: "YOUR_GOOGLE_CLIENT_ID", client_secret: "YOUR_GOOGLE_CLIENT_SECRET" }

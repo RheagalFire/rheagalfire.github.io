@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Sample Blog Post"
-date: 2024-06-29
+date: 2024-06-28
 ---
 
 # Sample Blog Post
@@ -50,6 +50,5 @@ def hello_world():
 | Row 1    | Data 1   | Data 2   |
 | Row 2    | Data 3   | Data 4   |
 | Row 3    | Data 5   | Data 6   |
-```
 
 This sample blog post includes various markdown features such as text formatting, links, lists, code blocks, images, and tables. It will help verify that the Jekyll setup for the blog section is functioning as intended and that the markdown content is rendered correctly.

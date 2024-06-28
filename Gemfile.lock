@@ -70,6 +70,7 @@ PLATFORMS
 
 DEPENDENCIES
   jekyll (~> 4.2.0)
+  kramdown-parser-gfm
   webrick (~> 1.8)
 
 BUNDLED WITH

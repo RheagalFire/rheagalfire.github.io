@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Content Manager</title>
-  <script src="https://unpkg.com/netlify-cms@3.1.11/dist/netlify-cms.js"></script>
+  <script src="/admin/decap-cms.js"></script>
 </head>
 <body>
   <!-- Include the CMS configuration file -->
@@ -12,16 +12,25 @@
       console.log('DOM fully loaded and parsed.');
       try {
         if (typeof CMS !== 'undefined') {
-          console.log('Netlify CMS script loaded successfully.');
+          console.log('Decap CMS script loaded successfully.');
           CMS.init({
             config: '/admin/config.yml'
           });
           console.log('CMS.init() called with config.');
         } else {
-          console.error('Netlify CMS script failed to load.');
+          console.error('Decap CMS script failed to load.');
         }
       } catch (error) {
         console.error('Error during CMS initialization:', error);
+      }
+    });
+
+    // Additional logging to check if CMS object is defined after page load
+    window.addEventListener('load', function() {
+      if (typeof CMS !== 'undefined') {
+        console.log('CMS object is defined after page load.');
+      } else {
+        console.error('CMS object is not defined after page load.');
       }
     });
   </script>

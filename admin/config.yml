@@ -25,3 +25,6 @@ auth:
   providers:
     - { name: "google", client_id: "${client_id}", client_secret: "${client_secret}" }
   email: arishalam121@gmail.com
+
+# Netlify Identity Widget
+identity_widget: true

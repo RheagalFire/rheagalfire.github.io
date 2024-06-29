@@ -23,5 +23,5 @@ publish_mode: editorial_workflow
 # Google SSO Integration
 auth:
   providers:
-    - { name: "google", client_id: "${client_id}", client_secret: "${client_secret}" }
+    - { name: "google", client_id: "${{ secrets.client_id }}", client_secret: "${{ secrets.client_secret }}" }
   email: arishalam121@gmail.com

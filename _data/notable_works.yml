@@ -1,6 +1,9 @@
 - Title: Automating Transactions Tagging 
   url: https://fold.money/blog/automating-transaction-tagging
   description: Worked in a small team to create the beautiful tagging engine with F1 score of 95%!
-  
+
+- Title: Spoke at Pydata Banglore on Scalable Hybrid RAG
+  url: https://docs.google.com/presentation/d/1a6ENOwzwmHTZ1k66ErT51CDKL4EksXiEYehhHRsKwWU/edit?usp=sharing
+  description: Spoke at length about scaling RAG for Large Number of Records
 
  

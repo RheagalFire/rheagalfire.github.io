@@ -4,6 +4,10 @@ languages:
   - item: C++
   
 frameworks:
+  - item: MCP
+  - item: RAGAS
+  - item: Langgraph
+  - item: Phoenix
   - item: Tensorflow
   - item: Numpy 
   - item: Pandas
@@ -11,6 +15,8 @@ frameworks:
   - item: RASA
 
 tools:
+  - item: Azure Cloud
+  - item: AWS
   - item: Bash
   - item: Git & Github
   - item: MLFLOW

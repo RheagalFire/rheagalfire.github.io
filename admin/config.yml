@@ -1,0 +1,30 @@
+backend:
+  name: git-gateway
+  branch: daily-blogs-feature
+
+media_folder: "assets/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "blog"
+    label: "Blog"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Table", name: "table", widget: "list", fields: [{label: "Row", name: "row", widget: "string"}] }
+
+publish_mode: editorial_workflow
+
+# Google SSO Integration
+auth:
+  providers:
+    - { name: "google", client_id: "${client_id}", client_secret: "${client_secret}" }
+  email: arishalam121@gmail.com
+
+# Netlify Identity Widget
+identity_widget: true

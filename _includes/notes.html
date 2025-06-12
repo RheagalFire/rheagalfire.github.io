@@ -1,34 +1,62 @@
 <section class="section notes">
   <div class="section__title">Notes</div>
   <div class="section__content">
-    <div class="notes__search">
-      <input type="text" id="notes-search" placeholder="Search notes by topic or tags..." class="notes__search-input">
+    <div class="notes__preview">
+      <div class="notes__summary">
+        <div class="notes__count">
+          <span class="notes__number">{{ site.data.notes | size }}</span>
+          <span class="notes__label">{% if site.data.notes.size == 1 %}Note{% else %}Notes{% endif %}</span>
+        </div>
+        <div class="notes__latest">
+          {% assign latest_note = site.data.notes | sort: 'date' | reverse | first %}
+          {% if latest_note %}
+            <div class="notes__latest-info">
+              <span class="notes__latest-label">Latest:</span>
+              <span class="notes__latest-topic">{{ latest_note.topic }}</span>
+              <span class="notes__latest-date">{{ latest_note.date | date: "%b %Y" }}</span>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+      
+      <button class="notes__toggle" id="notes-toggle" aria-expanded="false">
+        <span class="notes__toggle-text">View All Notes</span>
+        <svg class="notes__toggle-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M8 12l-4-4h8l-4 4z"/>
+        </svg>
+      </button>
     </div>
-    
-    <div class="notes__container" id="notes-container">
-      {% assign sorted_notes = site.data.notes | sort: 'date' | reverse %}
-      {% for note in sorted_notes %}
-        <article class="note" data-topic="{{ note.topic | downcase }}" data-tags="{{ note.tags | join: ',' | downcase }}">
-          <header class="note__header">
-            <h3 class="note__topic">{{ note.topic }}</h3>
-            <time class="note__date">{{ note.date | date: "%B %d, %Y" }}</time>
-          </header>
-          
-          <div class="note__tags">
-            {% for tag in note.tags %}
-              <span class="note__tag">{{ tag }}</span>
-            {% endfor %}
-          </div>
-          
-          <div class="note__content">
-            {{ note.content | markdownify }}
-          </div>
-        </article>
-      {% endfor %}
-    </div>
-    
-    <div class="notes__no-results" id="no-results" style="display: none;">
-      <p>No notes found matching your search criteria.</p>
+
+    <div class="notes__expanded" id="notes-expanded" style="display: none;">
+      <div class="notes__search">
+        <input type="text" id="notes-search" placeholder="Search notes by topic or tags..." class="notes__search-input">
+      </div>
+      
+      <div class="notes__container" id="notes-container">
+        {% assign sorted_notes = site.data.notes | sort: 'date' | reverse %}
+        {% for note in sorted_notes %}
+          <article class="note" data-topic="{{ note.topic | downcase }}" data-tags="{{ note.tags | join: ',' | downcase }}">
+            <header class="note__header">
+              <h3 class="note__topic">{{ note.topic }}</h3>
+              <time class="note__date">{{ note.date | date: "%B %d, %Y" }}</time>
+            </header>
+            
+            <div class="note__tags">
+              {% for tag in note.tags %}
+                <span class="note__tag">{{ tag }}</span>
+              {% endfor %}
+            </div>
+            
+            <div class="note__content">
+              {{ note.content | markdownify }}
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+      
+      <div class="notes__no-results" id="no-results" style="display: none;">
+        <p>No notes found matching your search criteria.</p>
+      </div>
     </div>
   </div>
 </section>

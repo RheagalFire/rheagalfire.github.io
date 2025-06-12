@@ -1,0 +1,34 @@
+<section class="section notes">
+  <div class="section__title">Notes</div>
+  <div class="section__content">
+    <div class="notes__search">
+      <input type="text" id="notes-search" placeholder="Search notes by topic or tags..." class="notes__search-input">
+    </div>
+    
+    <div class="notes__container" id="notes-container">
+      {% assign sorted_notes = site.data.notes | sort: 'date' | reverse %}
+      {% for note in sorted_notes %}
+        <article class="note" data-topic="{{ note.topic | downcase }}" data-tags="{{ note.tags | join: ',' | downcase }}">
+          <header class="note__header">
+            <h3 class="note__topic">{{ note.topic }}</h3>
+            <time class="note__date">{{ note.date | date: "%B %d, %Y" }}</time>
+          </header>
+          
+          <div class="note__tags">
+            {% for tag in note.tags %}
+              <span class="note__tag">{{ tag }}</span>
+            {% endfor %}
+          </div>
+          
+          <div class="note__content">
+            {{ note.content | markdownify }}
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+    
+    <div class="notes__no-results" id="no-results" style="display: none;">
+      <p>No notes found matching your search criteria.</p>
+    </div>
+  </div>
+</section>

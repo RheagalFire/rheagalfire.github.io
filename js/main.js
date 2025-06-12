@@ -70,8 +70,32 @@ $(function() {
   });
 
   sr.reveal('.background');
+  sr.reveal('.notes', { viewFactor: 0.2 });
   sr.reveal('.skills');
   sr.reveal('.experience', { viewFactor: 0.2 });
   sr.reveal('.featured-projects', { viewFactor: 0.1 });
   sr.reveal('.other-projects', { viewFactor: 0.05 });
+
+  const notesSearch = document.getElementById('notes-search');
+  const notesContainer = document.getElementById('notes-container');
+  const noResults = document.getElementById('no-results');
+
+  if (notesSearch) {
+    notesSearch.addEventListener('input', function() {
+      const searchTerm = this.value.toLowerCase().trim();
+      const notes = notesContainer.querySelectorAll('.note');
+      let visibleCount = 0;
+
+      notes.forEach(function(note) {
+        const topic = note.getAttribute('data-topic');
+        const tags = note.getAttribute('data-tags');
+        const isVisible = topic.includes(searchTerm) || tags.includes(searchTerm);
+        
+        note.style.display = isVisible ? 'block' : 'none';
+        if (isVisible) visibleCount++;
+      });
+
+      noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+    });
+  }
 });

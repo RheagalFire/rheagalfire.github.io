@@ -76,26 +76,24 @@ $(function() {
   sr.reveal('.featured-projects', { viewFactor: 0.1 });
   sr.reveal('.other-projects', { viewFactor: 0.05 });
 
-  const notesSearch = document.getElementById('notes-search');
-  const notesContainer = document.getElementById('notes-container');
-  const noResults = document.getElementById('no-results');
+  const notesSearchInput = document.getElementById('notes-search-input');
+  const noteItems = document.querySelectorAll('.note-item');
 
-  if (notesSearch) {
-    notesSearch.addEventListener('input', function() {
+  if (notesSearchInput && noteItems.length > 0) {
+    notesSearchInput.addEventListener('input', function() {
       const searchTerm = this.value.toLowerCase().trim();
-      const notes = notesContainer.querySelectorAll('.note');
-      let visibleCount = 0;
 
-      notes.forEach(function(note) {
-        const topic = note.getAttribute('data-topic');
-        const tags = note.getAttribute('data-tags');
-        const isVisible = topic.includes(searchTerm) || tags.includes(searchTerm);
+      noteItems.forEach(function(item) {
+        const topic = item.getAttribute('data-topic');
+        const tags = item.getAttribute('data-tags');
+        const searchableText = topic + ' ' + tags;
         
-        note.style.display = isVisible ? 'block' : 'none';
-        if (isVisible) visibleCount++;
+        if (searchableText.includes(searchTerm)) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'none';
+        }
       });
-
-      noResults.style.display = visibleCount === 0 ? 'block' : 'none';
     });
   }
 

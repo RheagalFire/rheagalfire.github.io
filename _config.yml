@@ -41,3 +41,8 @@ keep_files:
 plugins_dir:
   - jekyll-minifier
   - jekyll-sitemap
+
+collections:
+  notes:
+    output: true
+    permalink: /notes/:name/

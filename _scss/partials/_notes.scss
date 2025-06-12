@@ -82,27 +82,46 @@
 }
 
 .notes-search {
-  margin-bottom: 30px;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.notes-search::before {
+  content: '';
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23777777'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m21 21-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'/%3E%3C/svg%3E") no-repeat center;
+  background-size: contain;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .search-input {
   width: 100%;
-  padding: 12px 16px;
-  border: 2px solid $slate;
-  border-radius: 8px;
+  padding: 16px 20px 16px 50px;
+  border: 2px solid rgba(175, 175, 191, 0.2);
+  border-radius: 12px;
   font-size: 1rem;
   font-family: $Apercu;
-  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0.8);
   color: inherit;
-  transition: border-color 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 
   &:focus {
     outline: none;
     border-color: $blue;
+    box-shadow: 0 4px 20px rgba(0, 123, 255, 0.15);
+    background-color: $white;
   }
 
   &::placeholder {
     color: $grey;
+    font-weight: 400;
   }
 }
 
@@ -110,36 +129,62 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  display: grid;
+  gap: 16px;
 }
 
 .note-item {
   display: flex;
-  padding: 16px 0;
-  border-bottom: 1px solid $slate;
+  padding: 24px;
+  background: $white;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   gap: 20px;
-  
-  &:last-child {
-    border-bottom: none;
-  }
+  transition: all 0.3s ease;
+  border: 1px solid rgba(175, 175, 191, 0.1);
+  position: relative;
+  overflow: hidden;
   
   &:hover {
-    background-color: rgba(0, 123, 255, 0.05);
-    margin: 0 -10px;
-    padding: 16px 10px;
-    border-radius: 6px;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0, 123, 255, 0.15);
+    border-color: rgba(0, 123, 255, 0.2);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(135deg, $blue, lighten($blue, 10%));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover::before {
+    opacity: 1;
   }
 }
 
 .note-date {
   flex-shrink: 0;
-  width: 100px;
+  width: 120px;
   color: $grey;
   font-size: 0.9rem;
   font-family: 'Inconsolata', monospace;
+  font-weight: 500;
+  background: rgba(0, 123, 255, 0.05);
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-align: center;
+  height: fit-content;
   
   @include mobile {
-    width: 80px;
+    width: 100px;
     font-size: 0.8rem;
+    padding: 6px 8px;
   }
 }
 
@@ -147,15 +192,33 @@
   flex: 1;
   
   h3 {
-    margin: 0 0 8px 0;
-    font-size: 1.1rem;
+    margin: 0 0 12px 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.3;
     
     a {
       color: inherit;
       text-decoration: none;
+      position: relative;
       
       &:hover {
         color: $blue;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: $blue;
+        transition: width 0.3s ease;
+      }
+
+      &:hover::after {
+        width: 100%;
       }
     }
   }
@@ -164,16 +227,26 @@
 .note-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 8px;
+  margin-top: 8px;
 }
 
 .tag {
   color: $blue;
   text-decoration: none;
   font-size: 0.85rem;
+  font-weight: 500;
+  background: rgba(0, 123, 255, 0.1);
+  padding: 4px 12px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 123, 255, 0.2);
   
   &:hover {
-    text-decoration: underline;
+    background: $blue;
+    color: $white;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
   }
 }
 
@@ -184,13 +257,23 @@
 }
 
 .note-content {
+  background: $white;
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(175, 175, 191, 0.1);
+
   .note-header {
     margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid rgba(175, 175, 191, 0.1);
     
     h1 {
-      font-size: 2rem;
+      font-size: 2.5rem;
       margin-bottom: 16px;
       color: inherit;
+      font-weight: 700;
+      line-height: 1.2;
     }
   }
   
@@ -199,57 +282,100 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 20px;
+    gap: 15px;
+    margin-bottom: 30px;
     
     time {
       color: $grey;
       font-family: 'Inconsolata', monospace;
+      font-weight: 500;
+      background: rgba(0, 123, 255, 0.05);
+      padding: 8px 16px;
+      border-radius: 8px;
     }
   }
   
   .note-body {
-    line-height: 1.6;
+    line-height: 1.7;
+    font-size: 1.1rem;
     
     h1, h2, h3, h4, h5, h6 {
-      margin-top: 30px;
-      margin-bottom: 15px;
+      margin-top: 40px;
+      margin-bottom: 20px;
       color: inherit;
+      font-weight: 600;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      padding-bottom: 10px;
+      border-bottom: 2px solid rgba(0, 123, 255, 0.1);
+    }
+
+    h3 {
+      font-size: 1.4rem;
     }
     
     p {
-      margin-bottom: 16px;
+      margin-bottom: 20px;
+      color: rgba(68, 68, 82, 0.9);
     }
     
     ul, ol {
-      margin-bottom: 16px;
-      padding-left: 20px;
+      margin-bottom: 20px;
+      padding-left: 24px;
+      
+      li {
+        margin-bottom: 8px;
+        color: rgba(68, 68, 82, 0.9);
+      }
+    }
+
+    ul li::marker {
+      color: $blue;
     }
     
     code {
       background-color: rgba(0, 123, 255, 0.1);
-      padding: 2px 4px;
-      border-radius: 3px;
+      padding: 4px 8px;
+      border-radius: 6px;
       font-family: 'Inconsolata', monospace;
+      font-size: 0.9em;
+      border: 1px solid rgba(0, 123, 255, 0.2);
     }
     
     pre {
       background-color: rgba(0, 123, 255, 0.05);
-      padding: 16px;
-      border-radius: 8px;
+      padding: 20px;
+      border-radius: 12px;
       overflow-x: auto;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(0, 123, 255, 0.1);
+      
+      code {
+        background: none;
+        padding: 0;
+        border: none;
+      }
+    }
+
+    strong {
+      font-weight: 600;
+      color: $black;
     }
   }
 }
 
 .night & {
   .search-input {
-    border-color: $dark-grey;
+    border-color: rgba(175, 175, 191, 0.2);
+    background-color: rgba(23, 28, 40, 0.8);
     color: $off-white;
 
     &:focus {
       border-color: $blue;
+      background-color: $night;
+      box-shadow: 0 4px 20px rgba(0, 123, 255, 0.25);
     }
 
     &::placeholder {
@@ -257,21 +383,128 @@
     }
   }
 
+  .notes-search::before {
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23afafbf'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m21 21-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'/%3E%3C/svg%3E") no-repeat center;
+  }
+
   .note-item {
-    border-color: $dark-grey;
+    background: rgba(23, 28, 40, 0.8);
+    border-color: rgba(175, 175, 191, 0.1);
     
     &:hover {
-      background-color: rgba(0, 123, 255, 0.1);
+      background: rgba(23, 28, 40, 0.95);
+      box-shadow: 0 8px 32px rgba(0, 123, 255, 0.2);
+      border-color: rgba(0, 123, 255, 0.3);
     }
   }
 
-  .note-content .note-body {
-    code {
-      background-color: rgba(0, 123, 255, 0.2);
+  .note-date {
+    background: rgba(0, 123, 255, 0.15);
+    color: $slate;
+  }
+
+  .tag {
+    background: rgba(0, 123, 255, 0.2);
+    border-color: rgba(0, 123, 255, 0.3);
+    color: lighten($blue, 10%);
+    
+    &:hover {
+      background: $blue;
+      color: $white;
+    }
+  }
+
+  .note-content {
+    background: rgba(23, 28, 40, 0.8);
+    border-color: rgba(175, 175, 191, 0.1);
+
+    .note-header {
+      border-color: rgba(175, 175, 191, 0.2);
     }
 
-    pre {
-      background-color: rgba(0, 123, 255, 0.1);
+    .note-meta time {
+      background: rgba(0, 123, 255, 0.15);
+      color: $slate;
+    }
+
+    .note-body {
+      p, li {
+        color: rgba(231, 231, 231, 0.9);
+      }
+
+      h2 {
+        border-color: rgba(0, 123, 255, 0.2);
+      }
+
+      code {
+        background-color: rgba(0, 123, 255, 0.2);
+        border-color: rgba(0, 123, 255, 0.3);
+      }
+
+      pre {
+        background-color: rgba(0, 123, 255, 0.1);
+        border-color: rgba(0, 123, 255, 0.2);
+      }
+
+      strong {
+        color: $off-white;
+      }
+    }
+  }
+}
+
+@include mobile {
+  .notes-folder {
+    padding: 30px 15px;
+  }
+
+  .folder-header h1 {
+    font-size: 1.75rem;
+  }
+
+  .search-input {
+    padding: 14px 18px 14px 45px;
+    font-size: 0.95rem;
+  }
+
+  .notes-search::before {
+    left: 15px;
+    width: 14px;
+    height: 14px;
+  }
+
+  .note-item {
+    padding: 20px;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .note-date {
+    width: 100%;
+    text-align: left;
+  }
+
+  .note-info h3 {
+    font-size: 1.1rem;
+  }
+
+  .note-content {
+    padding: 30px 20px;
+    
+    .note-header h1 {
+      font-size: 2rem;
+    }
+
+    .note-body {
+      font-size: 1rem;
+      
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      h3 {
+        font-size: 1.25rem;
+      }
     }
   }
 }

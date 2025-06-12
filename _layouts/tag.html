@@ -1,7 +1,5 @@
 ---
 layout: default
-title: Notes
-permalink: /notes/
 ---
 
 <div id="site">
@@ -10,23 +8,20 @@ permalink: /notes/
   
   <div class="notes-folder">
     <nav class="breadcrumb">
-      <a href="/">Home</a> > notes
+      <a href="/">Home</a> > <a href="/tags/">tags</a>
     </nav>
     
     <header class="folder-header">
-      <h1>Folder: notes</h1>
-      <p>{{ site.data.notes | size }} items under this folder.</p>
+      <h1>Tag: #{{ page.tag }}</h1>
+      {% assign tagged_notes = site.data.notes | where_exp: "note", "note.tags contains page.tag" %}
+      <p>{{ tagged_notes | size }} items with this tag.</p>
     </header>
     
-    <div class="notes-search">
-      <input type="text" id="notes-search-input" placeholder="Search notes..." class="search-input">
-    </div>
-    
     <ul class="notes-list">
-      {% assign sorted_notes = site.data.notes | sort: 'date' | reverse %}
+      {% assign sorted_notes = tagged_notes | sort: 'date' | reverse %}
       {% for note in sorted_notes %}
         {% assign slug = note.topic | slugify %}
-        <li class="note-item" data-tags="{{ note.tags | join: ' ' | downcase }}" data-topic="{{ note.topic | downcase }}">
+        <li class="note-item">
           <div class="note-date">{{ note.date | date: "%b %d, %Y" }}</div>
           <div class="note-info">
             <h3><a href="/notes/{{ slug }}/">{{ note.topic }}</a></h3>
@@ -42,5 +37,4 @@ permalink: /notes/
   </div>
   
   {% include footer.html %}
-  {% include top-button.html %}
 </div>

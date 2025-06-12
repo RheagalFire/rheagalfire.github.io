@@ -98,4 +98,27 @@ $(function() {
       noResults.style.display = visibleCount === 0 ? 'block' : 'none';
     });
   }
+
+  const notesToggle = document.getElementById('notes-toggle');
+  const notesExpanded = document.getElementById('notes-expanded');
+
+  if (notesToggle && notesExpanded) {
+    notesToggle.addEventListener('click', function() {
+      const isExpanded = notesToggle.getAttribute('aria-expanded') === 'true';
+      
+      if (isExpanded) {
+        notesToggle.setAttribute('aria-expanded', 'false');
+        notesExpanded.classList.remove('expanded');
+        notesExpanded.style.display = 'none';
+        notesToggle.querySelector('.notes__toggle-text').textContent = 'View All';
+      } else {
+        notesToggle.setAttribute('aria-expanded', 'true');
+        notesExpanded.style.display = 'block';
+        setTimeout(() => {
+          notesExpanded.classList.add('expanded');
+        }, 10);
+        notesToggle.querySelector('.notes__toggle-text').textContent = 'View';
+      }
+    });
+  }
 });

@@ -15,7 +15,7 @@ permalink: /notes/
     
     <header class="folder-header">
       <h1>Folder: notes</h1>
-      <p>{{ site.data.notes | size }} items under this folder.</p>
+      <p>{{ site.notes | size }} items under this folder.</p>
     </header>
     
     <div class="notes-search">
@@ -23,13 +23,12 @@ permalink: /notes/
     </div>
     
     <ul class="notes-list">
-      {% assign sorted_notes = site.data.notes | sort: 'date' | reverse %}
+      {% assign sorted_notes = site.notes | sort: 'date' | reverse %}
       {% for note in sorted_notes %}
-        {% assign slug = note.topic | slugify %}
         <li class="note-item" data-tags="{{ note.tags | join: ' ' | downcase }}" data-topic="{{ note.topic | downcase }}">
           <div class="note-date">{{ note.date | date: "%b %d, %Y" }}</div>
           <div class="note-info">
-            <h3><a href="/notes/{{ slug }}/">{{ note.topic }}</a></h3>
+            <h3><a href="{{ note.url }}">{{ note.topic }}</a></h3>
             <div class="note-tags">
               {% for tag in note.tags %}
                 <a href="/tags/{{ tag | slugify }}/" class="tag">#{{ tag }}</a>

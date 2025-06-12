@@ -1,6 +1,5 @@
-.notes {
-  // Preview section (collapsed state)
-  .notes__preview {
+.notes-preview {
+  .notes-preview__summary {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -9,7 +8,6 @@
     border-radius: 12px;
     background-color: transparent;
     transition: all 0.3s ease;
-    cursor: pointer;
 
     &:hover {
       border-color: $blue;
@@ -24,7 +22,7 @@
     }
   }
 
-  .notes__summary {
+  .notes-preview__info {
     display: flex;
     align-items: center;
     gap: 24px;
@@ -35,26 +33,26 @@
     }
   }
 
-  .notes__count {
+  .notes-preview__count {
     display: flex;
     align-items: baseline;
     gap: 8px;
   }
 
-  .notes__number {
+  .notes-preview__number {
     font-size: 2rem;
     font-weight: 700;
     color: $blue;
     line-height: 1;
   }
 
-  .notes__label {
+  .notes-preview__label {
     font-size: 1rem;
     color: inherit;
     font-weight: 500;
   }
 
-  .notes__latest {
+  .notes-preview__latest {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -67,66 +65,61 @@
     }
   }
 
-  .notes__latest-label {
+  .notes-preview__latest-label {
     font-weight: 500;
   }
 
-  .notes__latest-topic {
+  .notes-preview__latest-topic {
     color: $blue;
     font-weight: 600;
   }
 
-  .notes__latest-date {
+  .notes-preview__latest-date {
     font-family: 'Inconsolata', monospace;
   }
 
-  .notes__toggle {
+  .notes-preview__link {
     display: flex;
     align-items: center;
     gap: 8px;
-    background: none;
-    border: none;
     color: $blue;
     font-size: 1rem;
     font-weight: 600;
     font-family: $Apercu;
-    cursor: pointer;
+    text-decoration: none;
     padding: 8px 16px;
     border-radius: 8px;
     transition: all 0.3s ease;
 
     &:hover {
       background-color: rgba(0, 123, 255, 0.1);
-    }
-
-    &:focus {
-      outline: none;
-      background-color: rgba(0, 123, 255, 0.1);
+      text-decoration: none;
     }
   }
 
-  .notes__toggle-icon {
-    transition: transform 0.3s ease;
-  }
+  .night & {
+    .notes-preview__summary {
+      border-color: $dark-grey;
+      
+      &:hover {
+        border-color: $blue;
+        box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
+      }
+    }
 
-  .notes__toggle[aria-expanded="true"] .notes__toggle-icon {
-    transform: rotate(180deg);
-  }
+    .notes-preview__latest {
+      color: $slate;
+    }
 
-  // Expanded section
-  .notes__expanded {
-    margin-top: 20px;
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-    transition: all 0.4s ease;
-
-    &.expanded {
-      opacity: 1;
-      max-height: none;
-      overflow: visible;
+    .notes-preview__link {
+      &:hover {
+        background-color: rgba(0, 123, 255, 0.2);
+      }
     }
   }
+}
+
+.notes {
 
   .notes__search {
     margin-bottom: 30px;

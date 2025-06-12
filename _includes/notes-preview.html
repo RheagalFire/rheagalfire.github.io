@@ -1,0 +1,27 @@
+<section class="section notes-preview">
+  <div class="section__title">Notes</div>
+  <div class="section__content">
+    <div class="notes-preview__summary">
+      <div class="notes-preview__info">
+        <div class="notes-preview__count">
+          <span class="notes-preview__number">{{ site.data.notes | size }}</span>
+          <span class="notes-preview__label">{% if site.data.notes.size == 1 %}Note{% else %}Notes{% endif %}</span>
+        </div>
+        <div class="notes-preview__latest">
+          {% assign latest_note = site.data.notes | sort: 'date' | reverse | first %}
+          {% if latest_note %}
+            <div class="notes-preview__latest-info">
+              <span class="notes-preview__latest-label">Latest:</span>
+              <span class="notes-preview__latest-topic">{{ latest_note.topic }}</span>
+              <span class="notes-preview__latest-date">{{ latest_note.date | date: "%b %Y" }}</span>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+      
+      <a href="/notes/" class="notes-preview__link">
+        View All Notes →
+      </a>
+    </div>
+  </div>
+</section>

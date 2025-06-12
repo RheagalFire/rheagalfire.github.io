@@ -1,102 +1,26 @@
-.notes {
-  // Preview section (collapsed state)
-  .notes__preview {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 24px;
-    border: 2px solid $slate;
-    border-radius: 12px;
-    background-color: transparent;
-    transition: all 0.3s ease;
-    cursor: pointer;
-
-    &:hover {
-      border-color: $blue;
-      transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(0, 123, 255, 0.1);
-    }
-
-    @include mobile {
-      flex-direction: column;
-      gap: 16px;
-      text-align: center;
-    }
+.header-nav {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  @include mobile {
+    top: 10px;
+    left: 20px;
   }
 
-  .notes__summary {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-
-    @include mobile {
-      flex-direction: column;
-      gap: 12px;
-    }
-  }
-
-  .notes__count {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-  }
-
-  .notes__number {
-    font-size: 2rem;
-    font-weight: 700;
-    color: $blue;
-    line-height: 1;
-  }
-
-  .notes__label {
-    font-size: 1rem;
-    color: inherit;
-    font-weight: 500;
-  }
-
-  .notes__latest {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.9rem;
-    color: $grey;
-
-    @include mobile {
-      flex-direction: column;
-      gap: 4px;
-    }
-  }
-
-  .notes__latest-label {
-    font-weight: 500;
-  }
-
-  .notes__latest-topic {
-    color: $blue;
-    font-weight: 600;
-  }
-
-  .notes__latest-date {
-    font-family: 'Inconsolata', monospace;
-  }
-
-  .notes__toggle {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: none;
-    border: none;
+  &__link {
     color: $blue;
     font-size: 1rem;
     font-weight: 600;
     font-family: $Apercu;
-    cursor: pointer;
-    padding: 8px 16px;
-    border-radius: 8px;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 6px;
     transition: all 0.3s ease;
+    display: inline-block;
 
     &:hover {
       background-color: rgba(0, 123, 255, 0.1);
+      text-decoration: none;
     }
 
     &:focus {
@@ -105,28 +29,18 @@
     }
   }
 
-  .notes__toggle-icon {
-    transition: transform 0.3s ease;
-  }
-
-  .notes__toggle[aria-expanded="true"] .notes__toggle-icon {
-    transform: rotate(180deg);
-  }
-
-  // Expanded section
-  .notes__expanded {
-    margin-top: 20px;
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-    transition: all 0.4s ease;
-
-    &.expanded {
-      opacity: 1;
-      max-height: none;
-      overflow: visible;
+  .night & {
+    &__link {
+      color: $blue;
+      
+      &:hover, &:focus {
+        background-color: rgba(0, 123, 255, 0.2);
+      }
     }
   }
+}
+
+.notes {
 
   .notes__search {
     margin-bottom: 30px;
@@ -269,24 +183,6 @@
   }
 
   .night & {
-    .notes__preview {
-      border-color: $dark-grey;
-      
-      &:hover {
-        border-color: $blue;
-        box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
-      }
-    }
-
-    .notes__toggle {
-      &:hover, &:focus {
-        background-color: rgba(0, 123, 255, 0.2);
-      }
-    }
-
-    .notes__latest {
-      color: $slate;
-    }
 
     .notes__search-input {
       border-color: $dark-grey;

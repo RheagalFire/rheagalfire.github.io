@@ -1,118 +1,39 @@
-.notes-preview {
-  .notes-preview__summary {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 24px;
-    border: 2px solid $slate;
-    border-radius: 12px;
-    background-color: transparent;
-    transition: all 0.3s ease;
-
-    &:hover {
-      border-color: $blue;
-      transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(0, 123, 255, 0.1);
-    }
-
-    @include mobile {
-      flex-direction: column;
-      gap: 16px;
-      text-align: center;
-    }
+.header-nav {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  @include mobile {
+    top: 10px;
+    left: 20px;
   }
 
-  .notes-preview__info {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-
-    @include mobile {
-      flex-direction: column;
-      gap: 12px;
-    }
-  }
-
-  .notes-preview__count {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-  }
-
-  .notes-preview__number {
-    font-size: 2rem;
-    font-weight: 700;
-    color: $blue;
-    line-height: 1;
-  }
-
-  .notes-preview__label {
-    font-size: 1rem;
-    color: inherit;
-    font-weight: 500;
-  }
-
-  .notes-preview__latest {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.9rem;
-    color: $grey;
-
-    @include mobile {
-      flex-direction: column;
-      gap: 4px;
-    }
-  }
-
-  .notes-preview__latest-label {
-    font-weight: 500;
-  }
-
-  .notes-preview__latest-topic {
-    color: $blue;
-    font-weight: 600;
-  }
-
-  .notes-preview__latest-date {
-    font-family: 'Inconsolata', monospace;
-  }
-
-  .notes-preview__link {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  &__link {
     color: $blue;
     font-size: 1rem;
     font-weight: 600;
     font-family: $Apercu;
     text-decoration: none;
-    padding: 8px 16px;
-    border-radius: 8px;
+    padding: 8px 12px;
+    border-radius: 6px;
     transition: all 0.3s ease;
+    display: inline-block;
 
     &:hover {
       background-color: rgba(0, 123, 255, 0.1);
       text-decoration: none;
     }
+
+    &:focus {
+      outline: none;
+      background-color: rgba(0, 123, 255, 0.1);
+    }
   }
 
   .night & {
-    .notes-preview__summary {
-      border-color: $dark-grey;
+    &__link {
+      color: $blue;
       
-      &:hover {
-        border-color: $blue;
-        box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
-      }
-    }
-
-    .notes-preview__latest {
-      color: $slate;
-    }
-
-    .notes-preview__link {
-      &:hover {
+      &:hover, &:focus {
         background-color: rgba(0, 123, 255, 0.2);
       }
     }
@@ -262,24 +183,6 @@
   }
 
   .night & {
-    .notes__preview {
-      border-color: $dark-grey;
-      
-      &:hover {
-        border-color: $blue;
-        box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
-      }
-    }
-
-    .notes__toggle {
-      &:hover, &:focus {
-        background-color: rgba(0, 123, 255, 0.2);
-      }
-    }
-
-    .notes__latest {
-      color: $slate;
-    }
 
     .notes__search-input {
       border-color: $dark-grey;
